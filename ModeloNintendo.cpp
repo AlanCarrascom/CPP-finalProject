@@ -1,8 +1,6 @@
 #include "ModeloNintendo.h"
 
 /*
-20% Agregar dos settes y dos getters
-20% Agregar un método nuevo
 40% Un menú (no importa si es sencillo) que te permita hacer uso de los métodos, tiene que ser original, juega con el código. (Puedes crear un tablero de posiciones y que si avanzas x+1 o si saltas y+1, puedes dejar al usuario crear un nuevo personaje personalizado, etc.)
 */
 
@@ -23,39 +21,50 @@ void ModeloNintendo::saludar(string nombre) {
 }
 
 void ModeloNintendo::saltar(char tecla) {
-	cout << "yuha";
+	cout << "yuha\n";
 }
 
 void ModeloNintendo::agacharse(char tecla) {
-	cout << "oig";
+	cout << "oig\n";
 }
 
 int ModeloNintendo::avanzar(char tecla) {
-	cout << "tac tac tac";
+	cout << "tac tac tac\n";
    return 0;
 }
 
 void ModeloNintendo::damage(string grito) {
-	cout << "Mamamia";
+	cout << "Mamamia\n";
 }
 
 void ModeloNintendo::habilidadesEspeciales(string combinacionTeclas) {
-   cout << "*Sonido épico de habilidad*" << combinacionTeclas;
+   cout << "*Sonido épico de habilidad* \n";
 }
 
 void ModeloNintendo::trucos(string combinacionTeclas) {
-   cout << "Estoy dentro 7u7r";
+   if (combinacionTeclas == "trucos") {
+      cout << "Estoy dentro 7u7r\n";
+   } else {
+      cout << "No estás dentro UnU\n";
+   }
+
 }
 
 void ModeloNintendo::revelarSecretos(string combinacionTeclas) {
-   cout << "Días Ordaz ordenó la matanza de Tlatelolco y Salinas de Gortari mató a Colosio";
+   if (combinacionTeclas == "secretos") {
+      cout << "Días Ordaz ordenó la matanza de Tlatelolco y Salinas de Gortari mató a Colosio\n";
+   } else {
+      cout << "Esto es confidencial, no puedes tener acceso\n";
+   }
 }
 
 void ModeloNintendo::setNombre(string nombre) {
+   printf("El nombre de tu personaje ha sido cambiado a %s\n", nombre);
    this->nombre = nombre;
 }
 
 void ModeloNintendo::setColor(string color) {
+   printf("El color de tu personaje ha sido cambiado a %s\n", color);
    this->color = color;
 }
 
@@ -77,7 +86,7 @@ string ModeloNintendo::getColor() {
 string bienvenida(){
    string nombre;
    printf("============================\n");
-   printf("||     ¡Bienvenido!       ||\n");
+   printf("||      ¡Bienvenido!      ||\n");
    printf("||                        ||\n");
    printf("||      CREA TU PROPIO    ||\n");
    printf("||        PERSONAJE       ||\n");
@@ -120,10 +129,10 @@ void menu(){
    printf("6. Habilidades especiales\n");
    printf("7. Trucos\n");
    printf("8. Revelar secretos\n");
-   printf("9. Obtener nombre de tu personaje\n");
-   printf("10. Obtener color de tu personaje\n");
    printf("11. Cambiar nombre de tu personaje\n");
    printf("12. Cambiar color de tu personaje\n");
+   printf("9. Obtener nombre de tu personaje\n");
+   printf("10. Obtener color de tu personaje\n");
    printf("13. Salir\n");
 }
 
@@ -134,9 +143,8 @@ int main() {
    nombreUsuario = bienvenida();
    ModeloNintendo personaje = crearPersonaje(nombreUsuario);
    menu();
-   
    scanf("%d", &opcion);
-   
+
    switch (opcion)
    {
    case 1:

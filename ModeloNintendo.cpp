@@ -59,12 +59,10 @@ void ModeloNintendo::revelarSecretos(string combinacionTeclas) {
 }
 
 void ModeloNintendo::setNombre(string nombre) {
-   printf("El nombre de tu personaje ha sido cambiado a %s\n", nombre);
    this->nombre = nombre;
 }
 
 void ModeloNintendo::setColor(string color) {
-   printf("El color de tu personaje ha sido cambiado a %s\n", color);
    this->color = color;
 }
 
@@ -126,9 +124,6 @@ void menu(){
    printf("3. Agacharse\n");
    printf("4. Avanzar\n");
    printf("5. Daño\n");
-   printf("6. Habilidades especiales\n");
-   printf("7. Trucos\n");
-   printf("8. Revelar secretos\n");
    printf("11. Cambiar nombre de tu personaje\n");
    printf("12. Cambiar color de tu personaje\n");
    printf("9. Obtener nombre de tu personaje\n");
@@ -138,23 +133,74 @@ void menu(){
 
 int main() {
    string nombreUsuario;
+   string nuevoNombre;
+   string nuevoColor;
+   int tiempo = 3;
+   bool salida = false;
    int opcion;
 
    nombreUsuario = bienvenida();
    ModeloNintendo personaje = crearPersonaje(nombreUsuario);
-   menu();
-   scanf("%d", &opcion);
 
-   switch (opcion)
-   {
-   case 1:
-      personaje.saludar(nombreUsuario);
-      break;
-   
-   default:
-      printf("Opción no válida, ingresa una opción válida");
-      break;
+
+   while(salida == false){
+      menu();
+      scanf("%d", &opcion);
+      switch (opcion)
+      {
+      case 1:
+         personaje.saludar(nombreUsuario);
+         break;
+      case 2:
+         personaje.saltar('a');
+         sleep(tiempo);
+         break;
+      case 3:
+         personaje.agacharse('c');
+         sleep(tiempo);
+         break;
+      case 4:
+         personaje.avanzar('d');
+         sleep(tiempo);
+         break;
+      case 5:
+         personaje.damage("auch");
+         sleep(tiempo);
+         break;
+      case 6:
+         printf("Ingresa el nuevo nombre de tu personaje: ");
+         scanf("%s", &nuevoNombre);
+         personaje.setNombre(nuevoNombre);
+         printf("Nombre cambiado con éxito\n");
+         sleep(tiempo);
+         break;
+      case 7:
+         printf("Ingresa el nuevo color de tu personaje: ");
+         scanf("%s", &nuevoColor);
+         personaje.setColor(nuevoColor);
+         printf("Color cambiado con éxito\n");
+         sleep(tiempo);
+         break;
+      case 8:
+         printf("El nombre de tu personaje es: %s", personaje.getNombre());
+         break;
+      case 9:
+         printf("El color de tu personaje es: %s", personaje.getColor());
+         sleep(tiempo);
+         break;
+      case 10:
+         printf("Adiós, %s", nombreUsuario);
+         salida = true;
+         sleep(tiempo);
+         break;
+      default:
+         printf("Opción no válida, ingresa una opción válida");
+         sleep(tiempo);
+         break;
+      }
+      
    }
+   
 
    return 0;
 }

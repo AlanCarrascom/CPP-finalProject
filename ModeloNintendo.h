@@ -1,6 +1,16 @@
 #include <iostream>
 #include <string>
 
+/***************************************************
+SI UTILIZAS UN SISTEMA OPERATIVO WINDOWS
+DESCOMENTARIZA ESTAS BIBLIOTECAS:
+#include <windows.h>
+#include <conio.h>
+***************************************************/ 
+
+#include <unistd.h>
+#include <stdlib.h>
+
 using namespace std;
 
 class ModeloNintendo {
@@ -26,7 +36,6 @@ class ModeloNintendo {
       void menu();
       string bienvenida();
       ModeloNintendo crearPersonaje(string nombreUsuario);
-
       
    protected:
       string nombreClave;

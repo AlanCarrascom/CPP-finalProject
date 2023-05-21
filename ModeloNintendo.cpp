@@ -1,8 +1,7 @@
 #include "ModeloNintendo.h"
 
-/*
-40% Un menú (no importa si es sencillo) que te permita hacer uso de los métodos, tiene que ser original, juega con el código. (Puedes crear un tablero de posiciones y que si avanzas x+1 o si saltas y+1, puedes dejar al usuario crear un nuevo personaje personalizado, etc.)
-*/
+// If you're on a windows system, replace 'tiempo = 20' with 'tiempo = 2000'
+int tiempo = 2;
 
 ModeloNintendo::ModeloNintendo(string nombre, string color, int edad, int salud, bool esHumano) {
 	this->nombre = nombre;
@@ -120,7 +119,9 @@ ModeloNintendo crearPersonaje(string nombreUsuario){
    cin >> esHumano;
    ModeloNintendo personaje = ModeloNintendo(nombre, color, edad, salud, esHumano);
    cout << "¡Genial! Ahora podrás interactuar con tu personaje\n";
-   sleep(3);
+
+   // This is the first occurrence of the sleep function
+   sleep(tiempo);
    return personaje;
 }
 

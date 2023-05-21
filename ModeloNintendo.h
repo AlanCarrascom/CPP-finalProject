@@ -1,12 +1,8 @@
 #include <iostream>
 #include <string>
 
-/***************************************************
-SI UTILIZAS UN SISTEMA OPERATIVO WINDOWS
-DESCOMENTARIZA ESTAS BIBLIOTECAS:
-#include <windows.h>
-#include <conio.h>
-***************************************************/ 
+// If you're on a windows system, uncomment the following line:
+// #include <windows.h>
 
 #include <unistd.h>
 #include <stdlib.h>

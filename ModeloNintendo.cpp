@@ -92,27 +92,26 @@ string bienvenida(){
    printf("===========================\n");
    printf("||    Por favor, ingresa  ||\n");
    printf("||       tu nombre        ||\n");
-   scanf("%s", &nombre);
+   cin >> nombre;
    printf("===========================\n");
    return nombre;
 }
 
 ModeloNintendo crearPersonaje(string nombreUsuario){
-   string nombreUsuario;
    string nombre;
    string color;
    int edad;
    int salud;
    bool esHumano;
-   printf("Ingresa el nombre de tu personaje, %s: ", nombreUsuario);
+   cout << "Ingresa el nombre de tu personaje, "<< nombreUsuario << ": ";
    cin >> nombre;
-   printf("Ingresa el color de tu personaje, %s: ");
+   cout << "Ingresa el color de tu personaje, "<< nombreUsuario << ": ";
    cin >> color;
-   printf("Ingresa la edad de tu personaje, %s: ", nombreUsuario);
+   cout << "Ingresa la edad de tu personaje, "<< nombreUsuario << ": ";
    cin >> edad;
-   printf("Ingresa la salud de tu personaje, %s: ", nombreUsuario);
+   cout << "Ingresa la salud de tu personaje, "<< nombreUsuario << ": ";
    cin >> salud;
-   printf("¿Tu personaje es humano? (1 = si, 0 = no), %s: ", nombreUsuario);
+   cout << "¿Tu personaje es humano? (1 = sí, 0 = no): ";
    cin >> esHumano;
    ModeloNintendo personaje = ModeloNintendo(nombre, color, edad, salud, esHumano);
    return personaje;
@@ -124,18 +123,18 @@ void menu(){
    printf("3. Agacharse\n");
    printf("4. Avanzar\n");
    printf("5. Daño\n");
-   printf("11. Cambiar nombre de tu personaje\n");
-   printf("12. Cambiar color de tu personaje\n");
-   printf("9. Obtener nombre de tu personaje\n");
-   printf("10. Obtener color de tu personaje\n");
-   printf("13. Salir\n");
+   printf("6. Cambiar nombre de tu personaje\n");
+   printf("7. Cambiar color de tu personaje\n");
+   printf("8. Obtener nombre de tu personaje\n");
+   printf("9. Obtener color de tu personaje\n");
+   printf("10. Salir\n");
 }
 
 int main() {
    string nombreUsuario;
    string nuevoNombre;
    string nuevoColor;
-   int tiempo = 3;
+   int tiempo = 3000;
    bool salida = false;
    int opcion;
 
@@ -144,8 +143,9 @@ int main() {
 
 
    while(salida == false){
+      system("clear");
       menu();
-      scanf("%d", &opcion);
+      cin >> opcion;
       switch (opcion)
       {
       case 1:
@@ -169,27 +169,27 @@ int main() {
          break;
       case 6:
          printf("Ingresa el nuevo nombre de tu personaje: ");
-         scanf("%s", &nuevoNombre);
+         cin >> nuevoNombre;
          personaje.setNombre(nuevoNombre);
          printf("Nombre cambiado con éxito\n");
          sleep(tiempo);
          break;
       case 7:
          printf("Ingresa el nuevo color de tu personaje: ");
-         scanf("%s", &nuevoColor);
+         cin >> nuevoColor;
          personaje.setColor(nuevoColor);
          printf("Color cambiado con éxito\n");
          sleep(tiempo);
          break;
       case 8:
-         printf("El nombre de tu personaje es: %s", personaje.getNombre());
+         cout << "El nombre de tu personaje es: " << personaje.getNombre() << "\n";
          break;
       case 9:
-         printf("El color de tu personaje es: %s", personaje.getColor());
+         cout << "El color de tu personaje es: " << personaje.getColor() << "\n";
          sleep(tiempo);
          break;
       case 10:
-         printf("Adiós, %s", nombreUsuario);
+         cout << "Adiós, " << nombreUsuario << "\n";
          salida = true;
          sleep(tiempo);
          break;
@@ -200,7 +200,5 @@ int main() {
       }
       
    }
-   
-
    return 0;
 }

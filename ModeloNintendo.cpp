@@ -35,24 +35,118 @@ int ModeloNintendo::avanzar(char tecla) {
    return 0;
 }
 
-void ModeloNintendo::danio(string grito) {
+void ModeloNintendo::damage(string grito) {
 	cout << "Mamamia";
 }
 
 void ModeloNintendo::habilidadesEspeciales(string combinacionTeclas) {
-   cout << "Hola" << combinacionTeclas;
+   cout << "*Sonido épico de habilidad*" << combinacionTeclas;
 }
 
 void ModeloNintendo::trucos(string combinacionTeclas) {
-   cout << "Hola";
+   cout << "Estoy dentro 7u7r";
 }
 
 void ModeloNintendo::revelarSecretos(string combinacionTeclas) {
-   cout << "Hola";
+   cout << "Días Ordaz ordenó la matanza de Tlatelolco y Salinas de Gortari mató a Colosio";
+}
+
+void ModeloNintendo::setNombre(string nombre) {
+   this->nombre = nombre;
+}
+
+void ModeloNintendo::setColor(string color) {
+   this->color = color;
+}
+
+string ModeloNintendo::getNombre() {
+   return this->nombre;
+}
+
+string ModeloNintendo::getColor() {
+   return this->color;
+}
+
+/*
+- Bienvenida e instrucciones
+- crear personaje
+- menu de opciones
+
+*/
+
+string bienvenida(){
+   string nombre;
+   printf("============================\n");
+   printf("||     ¡Bienvenido!       ||\n");
+   printf("||                        ||\n");
+   printf("||      CREA TU PROPIO    ||\n");
+   printf("||        PERSONAJE       ||\n");
+   printf("||         NINTENDO       ||\n");
+   printf("===========================\n");
+   printf("||    Por favor, ingresa  ||\n");
+   printf("||       tu nombre        ||\n");
+   scanf("%s", &nombre);
+   printf("===========================\n");
+   return nombre;
+}
+
+ModeloNintendo crearPersonaje(string nombreUsuario){
+   string nombreUsuario;
+   string nombre;
+   string color;
+   int edad;
+   int salud;
+   bool esHumano;
+   printf("Ingresa el nombre de tu personaje, %s: ", nombreUsuario);
+   cin >> nombre;
+   printf("Ingresa el color de tu personaje, %s: ");
+   cin >> color;
+   printf("Ingresa la edad de tu personaje, %s: ", nombreUsuario);
+   cin >> edad;
+   printf("Ingresa la salud de tu personaje, %s: ", nombreUsuario);
+   cin >> salud;
+   printf("¿Tu personaje es humano? (1 = si, 0 = no), %s: ", nombreUsuario);
+   cin >> esHumano;
+   ModeloNintendo personaje = ModeloNintendo(nombre, color, edad, salud, esHumano);
+   return personaje;
+}
+
+void menu(){
+   printf("1. Saludar\n");
+   printf("2. Saltar\n");
+   printf("3. Agacharse\n");
+   printf("4. Avanzar\n");
+   printf("5. Daño\n");
+   printf("6. Habilidades especiales\n");
+   printf("7. Trucos\n");
+   printf("8. Revelar secretos\n");
+   printf("9. Obtener nombre de tu personaje\n");
+   printf("10. Obtener color de tu personaje\n");
+   printf("11. Cambiar nombre de tu personaje\n");
+   printf("12. Cambiar color de tu personaje\n");
+   printf("13. Salir\n");
 }
 
 int main() {
-  ModeloNintendo toadcitoRojo = ModeloNintendo("Toad", "Rojo", 10, 100, false);
-  toadcitoRojo.saludar("Samuel");
-  return 0;
+   string nombreUsuario;
+   int opcion;
+
+   nombreUsuario = bienvenida();
+   ModeloNintendo personaje = crearPersonaje(nombreUsuario);
+   menu();
+   
+   scanf("%d", &opcion);
+   
+   switch (opcion)
+   {
+   case 1:
+      personaje.saludar(nombreUsuario);
+      break;
+   
+   default:
+      printf("Opción no válida, ingresa una opción válida");
+      break;
+   }
+
+   return 0;
 }

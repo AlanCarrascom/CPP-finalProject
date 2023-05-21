@@ -18,7 +18,15 @@ class ModeloNintendo {
       void saltar(char tecla);
       void agacharse(char tecla = 'C');
       int avanzar(char tecla);
-      void danio(string grito);
+      void damage(string grito);
+      void setNombre(string nombre);
+      void setColor(string color);
+      string getNombre();
+      string getColor();
+      void menu();
+      string bienvenida();
+      ModeloNintendo crearPersonaje(string nombreUsuario);
+
       
    protected:
       string nombreClave;

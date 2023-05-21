@@ -13,7 +13,7 @@ ModeloNintendo::ModeloNintendo(string nombre, string color, int edad, int salud,
 }
 
 ModeloNintendo::~ModeloNintendo() {
-   cout << "Murió" << "\n";
+   cout << "El juego se ha cerrado" << "\n";
 }
 
 void ModeloNintendo::saludar(string nombre) {
@@ -34,7 +34,7 @@ int ModeloNintendo::avanzar(char tecla) {
 }
 
 void ModeloNintendo::damage(string grito) {
-	cout << "Mamamia\n";
+	cout << "AUCH!\n";
 }
 
 void ModeloNintendo::habilidadesEspeciales(string combinacionTeclas) {
@@ -92,6 +92,8 @@ string bienvenida(){
    printf("===========================\n");
    printf("||    Por favor, ingresa  ||\n");
    printf("||       tu nombre        ||\n");
+   printf("||                        ||\n ");
+   printf("           ");
    cin >> nombre;
    printf("===========================\n");
    return nombre;
@@ -103,6 +105,9 @@ ModeloNintendo crearPersonaje(string nombreUsuario){
    int edad;
    int salud;
    bool esHumano;
+   system("clear");
+   cout << "¡Hola, " << nombreUsuario << "!\n";
+   cout << "Vamos a crear tu personaje\n";
    cout << "Ingresa el nombre de tu personaje, "<< nombreUsuario << ": ";
    cin >> nombre;
    cout << "Ingresa el color de tu personaje, "<< nombreUsuario << ": ";
@@ -114,30 +119,34 @@ ModeloNintendo crearPersonaje(string nombreUsuario){
    cout << "¿Tu personaje es humano? (1 = sí, 0 = no): ";
    cin >> esHumano;
    ModeloNintendo personaje = ModeloNintendo(nombre, color, edad, salud, esHumano);
+   cout << "¡Genial! Ahora podrás interactuar con tu personaje\n";
+   sleep(3);
    return personaje;
 }
 
 void menu(){
+   printf("Selecciona una de las opciones para interactuar con tu personaje\n\n");
    printf("1. Saludar\n");
    printf("2. Saltar\n");
    printf("3. Agacharse\n");
    printf("4. Avanzar\n");
-   printf("5. Daño\n");
+   printf("5. Infligir daño\n");
    printf("6. Cambiar nombre de tu personaje\n");
    printf("7. Cambiar color de tu personaje\n");
    printf("8. Obtener nombre de tu personaje\n");
    printf("9. Obtener color de tu personaje\n");
-   printf("10. Salir\n");
+   printf("10. Salir\n\n");
 }
 
 int main() {
    string nombreUsuario;
    string nuevoNombre;
    string nuevoColor;
-   int tiempo = 3000;
+   int tiempo = 2;
    bool salida = false;
    int opcion;
 
+   system("clear");
    nombreUsuario = bienvenida();
    ModeloNintendo personaje = crearPersonaje(nombreUsuario);
 
@@ -150,6 +159,7 @@ int main() {
       {
       case 1:
          personaje.saludar(nombreUsuario);
+         sleep(tiempo);
          break;
       case 2:
          personaje.saltar('a');
@@ -183,13 +193,14 @@ int main() {
          break;
       case 8:
          cout << "El nombre de tu personaje es: " << personaje.getNombre() << "\n";
+         sleep(tiempo);
          break;
       case 9:
          cout << "El color de tu personaje es: " << personaje.getColor() << "\n";
          sleep(tiempo);
          break;
       case 10:
-         cout << "Adiós, " << nombreUsuario << "\n";
+         cout << "Muchas gracias por jugar, " << nombreUsuario << "\n";
          salida = true;
          sleep(tiempo);
          break;
